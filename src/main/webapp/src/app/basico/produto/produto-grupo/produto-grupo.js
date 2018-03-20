@@ -6,9 +6,9 @@
 		.module('produto.produto-grupo')
 		.controller('ProdutoGrupo', CtrlForm);
 
-	CtrlForm.$inject = ['produtoGrupoRest', '$q', '$http']
+	CtrlForm.$inject = ['produtoGrupoRest', '$q', '$http', '$location']
 
-	function CtrlForm(dataservice, $q, $http) {
+	function CtrlForm(dataservice, $q, $http, $location) {
 		/* jshint validthis: true */
 		var vm = this;
 
@@ -22,6 +22,7 @@
 		vm.remover         = remover;
 		vm.salvar          = salvar;
 		vm.ultimo          = ultimo;
+		vm.voltar 		   = voltar;
 
 		function anterior() {
 			if (vm.model.id) {
@@ -171,6 +172,10 @@
 				vm.auxiliar = response.data.data.ProdutoGrupoDto.descricao;
 				vm.modoEdicao = true;
 			}
+		}
+
+		function voltar() {
+			$location.path('/');
 		}
 	}
 

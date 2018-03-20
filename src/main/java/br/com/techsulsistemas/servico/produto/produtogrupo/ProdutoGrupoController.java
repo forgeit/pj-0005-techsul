@@ -7,6 +7,7 @@ package br.com.techsulsistemas.servico.produto.produtogrupo;
 
 import br.com.techsulsistemas.servico.config.comum.AutoCompleteDto;
 import br.com.techsulsistemas.servico.config.ForgeController;
+import br.com.techsulsistemas.servico.config.comum.ComboDto;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
@@ -181,6 +182,20 @@ public class ProdutoGrupoController extends ForgeController {
             addData(lista);
         } catch (Exception ex) {
             addError("Ocorreu um erro ao carregar a lista");
+        }
+        
+        return build();
+    }
+    
+    @GET
+    @Path("combo")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response combo() {
+        try {
+            List<ComboDto> lista = servico.combo();
+            addData(lista);
+        } catch (Exception ex) {
+            addError("Ocorreu um erro ao carregar os dados");
         }
         
         return build();

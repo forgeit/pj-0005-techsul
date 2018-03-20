@@ -5,6 +5,7 @@
  */
 package br.com.techsulsistemas.servico.config.comum;
 
+import java.util.Map;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,4 +18,5 @@ import lombok.Data;
 public class ComboDto {
     private final Integer id;
     private final String descricao;
+    private final Map<String, Object> dados;
 }

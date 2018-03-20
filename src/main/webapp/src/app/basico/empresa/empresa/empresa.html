@@ -10,7 +10,7 @@ input, select {
 		<div class="panel-body" style="padding: 2px;">
 			<div class="row">
 				<div class="col-md-offset-1 col-md-1" style="padding-left: 1px; padding-right: 1px;">
-					<button type="button" ng-click="vm.novo(formulario)" style="width: 100%;" class="btn btn-primary"><i class="fa fa-file-alt fa-2x"></i><br>Novo</button>
+					<button type="button" ng-disabled="true" style="width: 100%;" class="btn btn-primary"><i class="fa fa-file-alt fa-2x"></i><br>Novo</button>
 				</div>
 
 				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
@@ -18,27 +18,27 @@ input, select {
 				</div>
 
 				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
-					<button type="button" ng-disabled="!vm.model.id" ng-click="vm.remover(formulario)" style="width: 100%;" class="btn btn-primary"><i class="fa fa-trash fa-2x"></i><br>Excluir</button>
+					<button type="button" ng-disabled="true" ng-click="vm.remover(formulario)" style="width: 100%;" class="btn btn-primary"><i class="fa fa-trash fa-2x"></i><br>Excluir</button>
 				</div>
 
 				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
-					<button type="button" ng-click="vm.novo(formulario)" style="width: 100%;" class="btn btn-primary"><i class="fa fa-quidditch fa-2x"></i><br>Limpar</button>
+					<button type="button" ng-disabled="true" style="width: 100%;" class="btn btn-primary"><i class="fa fa-quidditch fa-2x"></i><br>Limpar</button>
 				</div>
 
 				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
-					<button ng-click="vm.primeiro()" type="button" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-double-left fa-2x"></i><br>Primeiro</button>
+					<button ng-disabled="true" type="button" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-double-left fa-2x"></i><br>Primeiro</button>
 				</div>
 
 				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
-					<button type="button" ng-disabled="!vm.model.id" ng-click="vm.anterior()" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-left fa-2x"></i><br>Voltar</button>
+					<button type="button" ng-disabled="true" ng-click="vm.anterior()" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-left fa-2x"></i><br>Voltar</button>
 				</div>
 
 				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
-					<button type="button" ng-disabled="!vm.model.id" ng-click="vm.proximo()" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-right fa-2x"></i><br>Avançar</button>
+					<button type="button" ng-disabled="true" ng-click="vm.proximo()" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-right fa-2x"></i><br>Avançar</button>
 				</div>
 
 				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
-					<button ng-click="vm.ultimo()" type="button" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-double-right fa-2x"></i><br>Último</button>
+					<button ng-disabled="true" type="button" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-double-right fa-2x"></i><br>Último</button>
 				</div>
 
 				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
@@ -56,40 +56,31 @@ input, select {
 						<div class="row">
 							<div class="col-md-offset-1 col-md-5">
 								<div class="form-group">
-									<label for="razaoSocial">Razão Social:</label>
+									<label for="razaoSocial">Razão Social*:</label>
 									<input name="razaoSocial" type="text" class="form-control input-sm" ng-model="vm.model.razaoSocial" required>
 								</div>
 							</div>
 								
 							<div class="col-md-5">
 								<div class="form-group">
-									<label for="nomeFantasia">Nome Fantasia:</label>
+									<label for="nomeFantasia">Nome Fantasia*:</label>
 									<input name="nomeFantasia" type="text" class="form-control input-sm" ng-model="vm.model.nomeFantasia" required>
 								</div>
 							</div>
 						</div>
 
 						<div class="row">
-							<div class="col-md-offset-1 col-md-1">
-								<div class="form-group">
-									<label for="Logo">Logo:</label><br/>
-									<button style="padding: 4px 8px;" class="btn btn-primary"><i class="far fa-image"></i></button>
-									<!-- <button style="padding: 4px 8px;" class="btn btn-primary"><i class="fas fa-eye"></i></button> -->
-									<button style="padding: 4px 8px;" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-								</div>
-							</div>
-
-							<div class="col-md-8">
+							<div class="col-md-offset-1 col-md-9">
 								<div class="form-group">
 									<label for="endereco">Endereco:</label>
-									<input name="endereco" type="text" class="form-control input-sm" ng-model="vm.model.endereco" required>
+									<input name="endereco" type="text" class="form-control input-sm" ng-model="vm.model.endereco" >
 								</div>
 							</div>
 
 							<div class="col-md-1">
 								<div class="form-group">
 									<label for="numero">Número:</label>
-									<input name="numero" type="text" class="form-control input-sm" ng-model="vm.model.numero" required>
+									<input name="numero" type="text" class="form-control input-sm" ng-model="vm.model.numero" >
 								</div>
 							</div>
 						</div>
@@ -98,15 +89,15 @@ input, select {
 							<div class="col-md-offset-1 col-md-4">
 								<div class="form-group">
 									<label for="complemento">Complemento:</label>
-									<input name="complemento" type="text" class="form-control input-sm" ng-model="vm.model.complemento" required>
+									<input name="complemento" type="text" class="form-control input-sm" ng-model="vm.model.complemento" >
 								</div>
 							</div>
 
 							<div class="col-md-3">
 								<div class="form-group">
 									<label for="cidade">Cidade:</label>
-									<select class="form-control input-sm" id="cidade" name="cidade" ng-options="cidade.id as cidade.descricao for cidade in vm.cidadeList" ng-model="vm.model.cidade" required>
-										<option value="">Santa Cruz do Sul</option>
+									<select class="form-control input-sm" id="cidade" name="cidade" ng-options="cidade.id as cidade.descricao for cidade in vm.cidadeList" ng-model="vm.model.cidade" ng-change="vm.carregarSiglaEstadoPorCidade(vm.model.cidade)">
+										<option value="">Selecione</option>
 									</select>
 								</div>
 							</div>
@@ -114,13 +105,13 @@ input, select {
 							<div class="col-md-1">
 								<div class="form-group">
 									<label for="estado">Estado:</label>
-									<input name="estado" type="text" class="form-control input-sm" ng-model="vm.model.estado" required ng-disabled="true" ng-init="vm.model.estado = 'RS'">
+									<input name="estado" type="text" class="form-control input-sm" ng-model="vm.estado" ng-disabled="true" >
 								</div>
 							</div>
 							<div class="col-md-2">
 								<div class="form-group">
 									<label for="cep">CEP:</label>
-									<input name="cep" type="text" class="form-control input-sm" ng-model="vm.model.cep" required ui-br-cep-mask>
+									<input name="cep" type="text" class="form-control input-sm" ng-model="vm.model.cep" ui-br-cep-mask>
 								</div>
 							</div>
 						</div>
@@ -136,22 +127,21 @@ input, select {
 							<div class="col-md-2">
 								<div class="form-group">
 									<label for="inscricaoEstadual">Inscrição Estadual:</label>
-									<input name="inscricaoEstadual" type="text" class="form-control input-sm" ng-model="vm.model.inscricaoEstadual" required>
-<!-- 									<input type="text" class="form-control input-sm" name="inscricaoEstadual" ng-model="inscricaoEstadual" ui-br-ie-mask='RS'>
- -->								</div>
+									<input type="text" class="form-control input-sm" name="inscricaoEstadual" ng-model="inscricaoEstadual" ui-br-ie-mask="'RS'" >
+								</div>
 							</div>
 
 							<div class="col-md-2">
 								<div class="form-group">
-									<label for="telefone">Telefone:</label>
-									<input name="telefone" type="text" class="form-control input-sm" ng-model="vm.model.telefone" required ui-br-phone-number-mask>
+									<label for="celular">Telefone:</label>
+									<input name="celular" type="text" class="form-control input-sm" ng-model="vm.model.celular" >
 								</div>
 							</div>
 
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="email">E-mail:</label>
-									<input name="email" type="text" class="form-control input-sm" ng-model="vm.model.email" required>
+									<input name="email" type="text" class="form-control input-sm" ng-model="vm.model.email" >
 								</div>
 							</div>
 						</div>
@@ -160,28 +150,28 @@ input, select {
 							<div class="col-md-offset-1 col-md-1">
 								<div class="form-group">
 									<label for="baseIcms">ICMS:</label>
-									<input name="baseIcms" type="text" class="form-control input-sm" ng-model="vm.model.baseIcms" required>
+									<input name="baseIcms" type="text" class="form-control input-sm" ng-model="vm.model.baseIcms" >
 								</div>
 							</div>
 
 							<div class="col-md-1">
 								<div class="form-group">
 									<label for="baseIcmsSt">ICMS ST:</label>
-									<input name="baseIcmsSt" type="text" class="form-control input-sm" ng-model="vm.model.baseIcmsSt" required>
+									<input name="baseIcmsSt" type="text" class="form-control input-sm" ng-model="vm.model.baseIcmsSt" >
 								</div>
 							</div>
 
 							<div class="col-md-2">
 								<div class="form-group">
-									<label for="baseIcmsSt">Aliquota de Crédito:</label>
-									<input name="baseIcmsSt" type="text" class="form-control input-sm" ng-model="vm.model.baseIcmsSt" required>
+									<label for="aliquotaCredito">Aliquota de Crédito:</label>
+									<input name="aliquotaCredito" type="text" class="form-control input-sm" ng-model="vm.model.aliquotaCredito" >
 								</div>
 							</div>
 
 							<div class="col-md-2">
 								<div class="form-group">
 									<label for="ctr">C.R.T:</label>
-									<select class="form-control input-sm" id="crt" name="crt" ng-options="crt.id as crt.descricao for crt in vm.crtList" ng-model="vm.model.crt" required>
+									<select class="form-control input-sm" id="crt" name="crt" ng-options="crt.id as crt.descricao for crt in vm.crtList" ng-model="vm.model.crt" >
 										<option value="">Selecione</option>
 									</select>
 								</div>
@@ -189,12 +179,12 @@ input, select {
 
 							<div class="col-md-4">
 								<div class="form-group">
-									<label for="escritorio">Escritório:</label>
-									<select class="form-control input-sm" id="escritorio" name="escritorio" ng-options="escritorio.id as escritorio.descricao for escritorio in vm.escritorioList" ng-model="vm.model.escritorio" required>
+									<label for="contador">Escritório:</label>
+									<select class="form-control input-sm" id="contador" name="contador" ng-options="contador.id as contador.descricao for contador in vm.escritorioList" ng-model="vm.model.escritorio" >
 										<option value="">Selecione</option>
 									</select>
 								</div>
-							</div>
+							</div>							
 						</div>
 					</form>
 				</div>

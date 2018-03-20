@@ -25,6 +25,7 @@ public class EmpresaDto {
     private final String complemento;
     private final Integer cidade;
     private final String cep;
+    private final String email;
     private final String bairro;
     private final String inscricaoEstadual;
     private final String celular;
@@ -34,5 +35,5 @@ public class EmpresaDto {
     private final BigDecimal aliquotaCredito;
     private final String cnpj;
     private final String logo;
-    private final Integer contador;  
+    private final Integer escritorio;  
 }

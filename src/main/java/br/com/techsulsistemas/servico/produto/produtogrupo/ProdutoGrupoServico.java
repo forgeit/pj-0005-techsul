@@ -7,6 +7,7 @@ package br.com.techsulsistemas.servico.produto.produtogrupo;
 
 import br.com.techsulsistemas.servico.config.banco.DAO;
 import br.com.techsulsistemas.servico.config.comum.AutoCompleteDto;
+import br.com.techsulsistemas.servico.config.comum.ComboDto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -57,6 +58,28 @@ public class ProdutoGrupoServico {
         } catch (Exception ex) {
             return Collections.EMPTY_LIST;
         }
+    }
+    
+    public List<ComboDto> combo() throws Exception {
+        try {
+            List<ComboDto> lista = new ArrayList<>();
+            List<ProdutoGrupo> dados = dao.findAll();
+            
+            for (ProdutoGrupo model : dados) {
+                lista.add(criarConversorComboDto(model));
+            }
+            
+            return lista;
+        } catch (Exception ex) {
+            return Collections.EMPTY_LIST;
+        }
+    }
+    
+    private ComboDto criarConversorComboDto(ProdutoGrupo model) throws Exception {
+        return ComboDto.builder()
+                .id(model.getIdProdutoGrupo())
+                .descricao(model.getDescricao())
+                .build();
     }
     
     public ProdutoGrupoDto carregar(Integer id) throws Exception {

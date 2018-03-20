@@ -1,21 +1,21 @@
 <!doctype html>
-<html lang="pt" ng-app="app">
+<html ng-app="app" ng-strict-di>
 <head>
 	<title>TechSul</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<base href="/techsul/">
 
+	<link rel="stylesheet" type="text/css" href="bower_components/angular-ui-select/dist/select.min.js">
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="bower_components/toastr/toastr.min.css">
+	
 
 	<style type="text/css">
 		
 		body { 
 			font-size: 12px;
 		}
-
-
 	</style>
 
 </head>
@@ -45,8 +45,10 @@
 	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
 	<script type="text/javascript" src="bower_components/angular-input-masks/angular-input-masks-standalone.js"></script>
-
 	<script type="text/javascript" src="bower_components/angular-ui-select/dist/select.min.js"></script>
+
+	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-i18n/angular-locale_pt-br.js"></script>
 
 	<script type="text/javascript" src="src/app/app.module.js"></script>
 	<script type="text/javascript" src="src/app/core/core.module.js"></script>
@@ -64,7 +66,29 @@
 	<script type="text/javascript" src="src/app/basico/produto/produto-grupo/produto-grupo.module.js"></script>
 	<script type="text/javascript" src="src/app/basico/produto/produto-grupo/produto-grupo.route.js"></script>
 	<script type="text/javascript" src="src/app/basico/produto/produto-grupo/produto-grupo.rest.js"></script>
+	<script type="text/javascript" src="src/app/basico/produto/produto-grupo/produto-grupo.factory.js"></script>
 	<script type="text/javascript" src="src/app/basico/produto/produto-grupo/produto-grupo.js"></script>
+
+	<script type="text/javascript" src="src/app/basico/produto/produto-cest/produto-cest.module.js"></script>
+	<script type="text/javascript" src="src/app/basico/produto/produto-cest/produto-cest.rest.js"></script>
+	<script type="text/javascript" src="src/app/basico/produto/produto-cest/produto-cest.factory.js"></script>
+
+	<script type="text/javascript" src="src/app/basico/produto/produto-csosn/produto-csosn.module.js"></script>	
+	<script type="text/javascript" src="src/app/basico/produto/produto-csosn/produto-csosn.rest.js"></script>	
+	<script type="text/javascript" src="src/app/basico/produto/produto-csosn/produto-csosn.factory.js"></script>	
+
+	<script type="text/javascript" src="src/app/basico/produto/produto-origem/produto-origem.module.js"></script>
+	<script type="text/javascript" src="src/app/basico/produto/produto-origem/produto-origem.rest.js"></script>
+	<script type="text/javascript" src="src/app/basico/produto/produto-origem/produto-origem.factory.js"></script>
+
+	<script type="text/javascript" src="src/app/basico/produto/produto-unidade/produto-unidade.module.js"></script>
+	<script type="text/javascript" src="src/app/basico/produto/produto-unidade/produto-unidade.rest.js"></script>
+	<script type="text/javascript" src="src/app/basico/produto/produto-unidade/produto-unidade.factory.js"></script>
+
+	<script type="text/javascript" src="src/app/basico/produto/produto/produto.module.js"></script>
+	<script type="text/javascript" src="src/app/basico/produto/produto/produto.route.js"></script>
+	<script type="text/javascript" src="src/app/basico/produto/produto/produto.rest.js"></script>
+	<script type="text/javascript" src="src/app/basico/produto/produto/produto.js"></script>
 
 	<script type="text/javascript" src="src/app/basico/empresa/empresa.module.js"></script>
 
@@ -76,6 +100,15 @@
 	<script type="text/javascript" src="src/app/basico/empresa/empresa-codigo-regime-tributario/empresa-codigo-regime-tributario.module.js"></script>
 	<script type="text/javascript" src="src/app/basico/empresa/empresa-codigo-regime-tributario/empresa-codigo-regime-tributario.rest.js"></script>
 	<script type="text/javascript" src="src/app/basico/empresa/empresa-codigo-regime-tributario/empresa-codigo-regime-tributario.factory.js"></script>
+
+	<script type="text/javascript" src="src/app/basico/empresa/empresa-escritorio-contabil/empresa-escritorio-contabil.module.js"></script>
+	<script type="text/javascript" src="src/app/basico/empresa/empresa-escritorio-contabil/empresa-escritorio-contabil.rest.js"></script>
+	<script type="text/javascript" src="src/app/basico/empresa/empresa-escritorio-contabil/empresa-escritorio-contabil.factory.js"></script>
+
+	<script type="text/javascript" src="src/app/basico/endereco/endereco.module.js"></script>
+	<script type="text/javascript" src="src/app/basico/endereco/endereco-cidade/endereco-cidade.module.js"></script>
+	<script type="text/javascript" src="src/app/basico/endereco/endereco-cidade/endereco-cidade.rest.js"></script>
+	<script type="text/javascript" src="src/app/basico/endereco/endereco-cidade/endereco-cidade.factory.js"></script>
 
 </body>
 </html>

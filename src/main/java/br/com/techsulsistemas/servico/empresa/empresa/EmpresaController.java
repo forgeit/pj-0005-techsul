@@ -33,12 +33,14 @@ public class EmpresaController extends ForgeController {
         this.servico = new EmpresaServico();
     }
 
-    @POST
+    @PUT
+    @Path("{id:\\d+}")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(EmpresaCommand command) {
+    public Response edit(@PathParam("id") Integer id, EmpresaCommand command) {
         try {
             EmpresaDto dto = EmpresaDto.builder()
+                    .id(id)
                     .razaoSocial(command.getRazaoSocial())
                     .nomeFantasia(command.getNomeFantasia())
                     .endereco(command.getEndereco())
@@ -55,11 +57,12 @@ public class EmpresaController extends ForgeController {
                     .aliquotaCredito(command.getAliquotaCredito())
                     .cnpj(command.getCnpj())
                     .logo(command.getLogo())
-                    .contador(command.getContador())
+                    .email(command.getEmail())
+                    .escritorio(command.getEscritorio())
                     .build();
               
-            servico.criar(dto);
-            addMessage("Sucesso ao salvar o grupo de produto");
+            servico.atualizar(dto);
+            addMessage("Sucesso ao atualizar a empresa.");
         } catch (Exception ex) {
             addError(ex);
         }
@@ -67,120 +70,16 @@ public class EmpresaController extends ForgeController {
         return build();
     }
 
-    @PUT
-    @Path("{id:\\d+}")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response edit(@PathParam("id") Integer id, EmpresaCommand command) {
-        try {
-//            ProdutoGrupoDto dto = ProdutoGrupoDto.builder()
-//                    .id(id)
-//                    .descricao(command.getDescricao())
-//                    .percentualLucro(command.getPercentualLucro())
-//                    .build();
-//            
-//            servico.atualizar(dto);
-//            addMessage("Sucesso ao atualizar o grupo de produto");
-        } catch (Exception ex) {
-            addError(ex);
-        }
-        
-        return build();
-    }
-
-    @DELETE
-    @Path("{id:\\d+}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(@PathParam("id") Integer id) {
-        try {
-//            servico.remover(id);
-//            addMessage("Sucesso ao remover o registro");
-        } catch (Exception ex) {
-            addError("Ocorreu um erro ao remover o registro");
-        }
-
-        return build();
-    }
-
-    @GET
-    @Path("{id:\\d+}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response find(@PathParam("id") Integer id) {
-        try {
-//            ProdutoGrupoDto dto = servico.carregar(id);
-//            addData(dto);
-        } catch (Exception ex) {
-            addError("Ocorreu um erro ao carregar o objeto");
-        }
-        
-        return build();
-    }
-    
-    @GET
-    @Path("primeiro")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response findFirst() {
-        try {
-//            ProdutoGrupoDto dto = servico.primeiro();
-//            addData(dto);
-        } catch (Exception ex) {
-            addError("Ocorreu um erro ao carregar o objeto");
-        }
-        
-        return build();
-    }
-    
     @GET
     @Path("ultimo")
     @Produces({MediaType.APPLICATION_JSON})
     public Response findLast() {
         try {
-//            ProdutoGrupoDto dto = servico.ultimo();
-//            addData(dto);
+            EmpresaDto dto = servico.ultimo();
+            addData(dto);
         } catch (Exception ex) {
+            ex.printStackTrace();
             addError("Ocorreu um erro ao carregar o objeto");
-        }
-        
-        return build();
-    }
-    
-    @GET
-    @Path("proximo/{id}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response proximo(@PathParam("id") Integer id) {
-        try {
-//            ProdutoGrupoDto dto = servico.proximo(id);
-//            addData(dto);
-        } catch (Exception ex) {
-            addError("Ocorreu um erro ao carregar o objeto");
-        }
-        
-        return build();
-    }
-    
-    @GET
-    @Path("anterior/{id}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response anterior(@PathParam("id") Integer id) {
-        try {
-//            ProdutoGrupoDto dto = servico.anterior(id);
-//            addData(dto);
-        } catch (Exception ex) {
-            addError("Ocorreu um erro ao carregar o objeto");
-        }
-        
-        return build();
-    }
-    
-    @GET
-    @Path("autocomplete/{filtro}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response autocomplete(@PathParam("filtro") String filtro) {
-        try {
-//            List<AutoCompleteDto> lista = servico.autocomplete(filtro);
-//            addData(lista);
-        } catch (Exception ex) {
-            addError("Ocorreu um erro ao carregar a lista");
         }
         
         return build();

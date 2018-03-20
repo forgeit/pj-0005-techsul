@@ -9,6 +9,11 @@
     <class>br.com.techsulsistemas.servico.endereco.enderecopais.EnderecoPais</class>
     <class>br.com.techsulsistemas.servico.empresa.empresa.Empresa</class>
     <class>br.com.techsulsistemas.servico.empresa.empresaescritoriocontabil.EmpresaEscritorioContabil</class>
+    <class>br.com.techsulsistemas.servico.produto.produtocest.ProdutoCest</class>
+    <class>br.com.techsulsistemas.servico.produto.produtocsosn.ProdutoCsosn</class>
+    <class>br.com.techsulsistemas.servico.produto.produtoorigem.ProdutoOrigem</class>
+    <class>br.com.techsulsistemas.servico.produto.produtounidade.ProdutoUnidade</class>
+    <class>br.com.techsulsistemas.servico.produto.produto.Produto</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>

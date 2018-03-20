@@ -4,6 +4,7 @@
 		'ngRoute',
 		'ui.bootstrap',
 		'ui.select',
+		'ngSanitize',
 		'ui.utils.masks',
 		'core.utils'
 	]);

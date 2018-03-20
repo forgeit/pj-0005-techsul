@@ -16,7 +16,6 @@ import lombok.Data;
 @Data
 public class EmpresaCommand {
     private Integer id;
-    
     private String razaoSocial;
     private String nomeFantasia;
     private String endereco;
@@ -33,5 +32,6 @@ public class EmpresaCommand {
     private BigDecimal aliquotaCredito;
     private String cnpj;
     private String logo;
-    private Integer contador;
+    private String email;
+    private Integer escritorio;
 }

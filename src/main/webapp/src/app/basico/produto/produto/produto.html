@@ -1,0 +1,185 @@
+<style type="text/css">
+input, select {
+	border: 1px solid #888 !important;
+}
+</style>
+
+<form novalidate name="formulario" autocomplete="off">
+	<div class="panel panel-primary">
+		<div class="panel-heading">Cadastro de Produto</div>
+		<div class="panel-body" style="padding: 2px;">
+			<div class="row">
+				<div class="col-md-offset-1 col-md-1" style="padding-left: 1px; padding-right: 1px;">
+					<button type="button" ng-click="vm.novo(formulario)" style="width: 100%;" class="btn btn-primary"><i class="fa fa-file-alt fa-2x"></i><br>Novo</button>
+				</div>
+
+				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
+					<button type="submit" ng-disabled="formulario.$invalid" ng-click="vm.salvar(formulario)" style="width: 100%;" class="btn btn-primary"><i class="fa fa-save fa-2x"></i><br>Salvar</button>
+				</div>
+
+				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
+					<button type="button" ng-disabled="!vm.model.id" ng-click="vm.remover(formulario)" style="width: 100%;" class="btn btn-primary"><i class="fa fa-trash fa-2x"></i><br>Excluir</button>
+				</div>
+
+				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
+					<button type="button" ng-click="vm.novo(formulario)" style="width: 100%;" class="btn btn-primary"><i class="fa fa-quidditch fa-2x"></i><br>Limpar</button>
+				</div>
+
+				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
+					<button ng-click="vm.primeiro()" type="button" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-double-left fa-2x"></i><br>Primeiro</button>
+				</div>
+
+				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
+					<button type="button" ng-disabled="!vm.model.id" ng-click="vm.anterior()" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-left fa-2x"></i><br>Voltar</button>
+				</div>
+
+				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
+					<button type="button" ng-disabled="!vm.model.id" ng-click="vm.proximo()" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-right fa-2x"></i><br>Avançar</button>
+				</div>
+
+				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
+					<button ng-click="vm.ultimo()" type="button" style="width: 100%;" class="btn btn-primary"><i class="fa fa-angle-double-right fa-2x"></i><br>Último</button>
+				</div>
+
+				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
+					<button type="button" ng-disabled="true" style="width: 100%;" class="btn btn-primary"><i class="fa fa-print fa-2x"></i><br>Imprimir</button>
+				</div>
+
+				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
+					<button type="button" ng-click="vm.voltar()" style="width: 100%;" class="btn btn-primary"><i class="fa fa-sign-out-alt fa-2x"></i><br>Sair</button>
+				</div>
+			</div>
+
+			<div class="row" style="margin-top: 20px;">
+				<div class="col-md-12">
+					<form novalidate>
+						<div class="row">
+							<div class="col-md-offset-1 col-md-2">
+								<div class="form-group">
+									<label for="codigo">Código:</label>
+									<input name="codigo" type="text" class="form-control input-sm" ng-model="vm.model.codigo" required>
+								</div>
+							</div>
+								
+							<div class="col-md-8">
+								<div class="form-group">
+									<label for="descricao">Descrição:</label>
+									<input name="descricao" type="text" class="form-control input-sm" ng-model="vm.model.descricao" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-offset-1 col-md-2">
+								<div class="form-group has-feedback">
+									<label for="unidade">Unidade:</label>
+									<input 
+										type="text" ng-model="vm.unidade" 
+										uib-typeahead="objeto as objeto.descricao for objeto in vm.unidadeList | filter:{descricao:$viewValue}" 
+										class="form-control input-sm" typeahead-show-hint="true" 
+										typeahead-min-length="0" 
+										typeahead-on-select="vm.setUnidade($item, $model, $label, $event)"
+										name="unidade" >
+									<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
+								</div>
+							</div>
+								
+							<div class="col-md-2">
+								<div class="form-group has-feedback">
+									<label for="descricao">NCM:</label>
+									<input 
+										type="text" ng-model="vm.ncm" 
+										uib-typeahead="objeto as objeto.descricao for objeto in vm.ncmList | filter:{descricao:$viewValue}" 
+										class="form-control input-sm" typeahead-show-hint="true" 
+										typeahead-min-length="0" 
+										typeahead-on-select="vm.setUnidade($item, $model, $label, $event)"
+										name="ncm" >
+									<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
+								</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="descricao">CEST:</label>
+									<input name="descricao" type="text" class="form-control input-sm" ng-model="vm.model.descricao" ng-disabled="true">
+								</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group has-feedback">
+									<label for="origemMercadoria">Origem da Mercadoria:</label>
+									<input 
+										type="text" ng-model="vm.origemMercadoria" 
+										uib-typeahead="objeto as objeto.descricao for objeto in vm.origemMercadoriaList | filter:{descricao:$viewValue}" 
+										class="form-control input-sm" typeahead-show-hint="true" 
+										typeahead-min-length="0" 
+										typeahead-on-select="vm.setUnidade($item, $model, $label, $event)"
+										name="origemMercadoria" >
+									<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
+								</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group has-feedback">
+									<label for="csosn">CSOSN:</label>
+									<input 
+										type="text" ng-model="vm.csosn" 
+										uib-typeahead="objeto as objeto.descricao for objeto in vm.csosnList | filter:{descricao:$viewValue}" 
+										class="form-control input-sm" typeahead-show-hint="true" 
+										typeahead-min-length="0" 
+										typeahead-on-select="vm.setUnidade($item, $model, $label, $event)"
+										name="csosn" >
+									<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-offset-1 col-md-2">
+								<div class="form-group has-feedback">
+									<label for="grupo">Grupo:</label>
+									<input 
+										type="text" ng-model="vm.grupo" 
+										uib-typeahead="objeto as objeto.descricao for objeto in vm.grupoList | filter:{descricao:$viewValue}" 
+										class="form-control input-sm" typeahead-show-hint="true" 
+										typeahead-min-length="0" 
+										typeahead-on-select="vm.setGrupo($item, $model, $label, $event)"
+										name="grupo" >
+									<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
+								</div>
+							</div>
+	
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="precoCusto">Preço de Custo:</label>
+									<input type="text" name="precoCusto" ng-model="vm.model.precoCusto" ui-money-mask="3" class="form-control input-sm">
+								</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="precoVenda">Preço de Venda:</label>
+									<input type="text" name="precoVenda" ng-model="vm.model.precoVenda" ui-money-mask="3" class="form-control input-sm">
+								</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="precoEspecial">Preço Especial:</label>
+									<input type="text" name="precoEspecial" ng-model="vm.model.precoEspecial" ui-money-mask="3" class="form-control input-sm">
+								</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="quantidadePrecoEspecial">Quantidade Preço Especial:</label>
+									<input name="quantidadePrecoEspecial" type="text" class="form-control input-sm" ng-model="vm.model.quantidadePrecoEspecial" ui-number-mask="2">
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

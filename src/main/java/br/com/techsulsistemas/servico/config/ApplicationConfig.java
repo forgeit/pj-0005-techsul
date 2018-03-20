@@ -32,7 +32,12 @@ public class ApplicationConfig extends Application {
         resources.add(br.com.techsulsistemas.servico.empresa.empresa.EmpresaController.class);
         resources.add(br.com.techsulsistemas.servico.empresa.empresaescritoriocontabil.EmpresaEscritorioContabilController.class);
         resources.add(br.com.techsulsistemas.servico.empresa.empresaregimetributario.EmpresaCodigoRegimeTributarioController.class);
+        resources.add(br.com.techsulsistemas.servico.endereco.enderecocidade.EnderecoCidadeController.class);
+        resources.add(br.com.techsulsistemas.servico.produto.produtocest.ProdutoCestController.class);
+        resources.add(br.com.techsulsistemas.servico.produto.produtocsosn.ProdutoCsosnController.class);
         resources.add(br.com.techsulsistemas.servico.produto.produtogrupo.ProdutoGrupoController.class);
+        resources.add(br.com.techsulsistemas.servico.produto.produtoorigem.ProdutoOrigemController.class);
+        resources.add(br.com.techsulsistemas.servico.produto.produtounidade.ProdutoUnidadeController.class);
     }
     
 }

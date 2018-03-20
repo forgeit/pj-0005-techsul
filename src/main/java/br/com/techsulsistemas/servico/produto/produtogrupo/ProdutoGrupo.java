@@ -5,9 +5,12 @@
  */
 package br.com.techsulsistemas.servico.produto.produtogrupo;
 
+import br.com.techsulsistemas.servico.produto.produto.Produto;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +18,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -30,6 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ProdutoGrupo.findAll", query = "SELECT p FROM ProdutoGrupo p")})
 @XmlRootElement
 public class ProdutoGrupo implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produtoGrupo")
+    private List<Produto> produtoList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -119,6 +126,14 @@ public class ProdutoGrupo implements Serializable {
     @Override
     public String toString() {
         return "br.com.techsulsistemas.ProdutoGrupo[ idProdutoGrupo=" + idProdutoGrupo + " ]";
+    }
+
+    public List<Produto> getProdutoList() {
+        return produtoList;
+    }
+
+    public void setProdutoList(List<Produto> produtoList) {
+        this.produtoList = produtoList;
     }
     
 }

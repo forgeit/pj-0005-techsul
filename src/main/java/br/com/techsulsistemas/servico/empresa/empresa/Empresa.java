@@ -54,6 +54,9 @@ public class Empresa implements Serializable {
     @Column(name = "endereco")
     private String endereco;
     @Size(max = 2147483647)
+    @Column(name = "email")
+    private String email;
+    @Size(max = 2147483647)
     @Column(name = "numero")
     private String numero;
     @Size(max = 2147483647)
@@ -290,5 +293,15 @@ public class Empresa implements Serializable {
     public String toString() {
         return "br.com.techsulsistemas.servico.empresa.empresaregimetributario.Empresa[ idEmpresa=" + idEmpresa + " ]";
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
     
 }
