@@ -1,9 +1,3 @@
-<style type="text/css">
-input {
-	border: 1px solid #888 !important;
-}
-</style>
-
 <form novalidate name="formulario" autocomplete="off">
 	<div class="panel panel-primary">
 		<div class="panel-heading">Cadastro de Grupo de Produtos</div>
@@ -87,7 +81,7 @@ input {
 							<div class="col-md-offset-1 col-md-3">
 								<div class="form-group">
 									<label for="projeto">% de Lucro:</label>
-									<input name="percentualLucro" type="number" name="codigo" class="form-control input-sm" ng-model="vm.model.percentualLucro" required>
+									<input class="form-control input-sm" type="text" name="percentualLucro" ng-model="vm.model.percentualLucro" ui-percentage-mask required>
 									<span ng-show="formulario.percentualLucro.$dirty && formulario.percentualLucro.$error.required" class="help-block">O valor é obrigatório.</span>
 									<span ng-show="formulario.percentualLucro.$dirty && formulario.percentualLucro.$error.number" class="help-block">O valor deve ser númerico.</span>
 								</div>

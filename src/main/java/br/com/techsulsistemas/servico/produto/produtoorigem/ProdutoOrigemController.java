@@ -7,7 +7,6 @@ package br.com.techsulsistemas.servico.produto.produtoorigem;
 
 import br.com.techsulsistemas.servico.config.ForgeController;
 import br.com.techsulsistemas.servico.config.comum.ComboDto;
-import br.com.techsulsistemas.servico.empresa.empresaescritoriocontabil.EmpresaEscritorioContabilServico;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;

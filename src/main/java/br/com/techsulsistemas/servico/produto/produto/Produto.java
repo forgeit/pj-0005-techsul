@@ -52,6 +52,16 @@ public class Produto implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "descricao")
     private String descricao;
+    
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "ean")
+    private String ean;
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "ean_tributario")
+    private String eanTributario;
+    
+    
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "fg_situacao")
@@ -59,6 +69,8 @@ public class Produto implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "preco_custo")
     private BigDecimal precoCusto;
+    @Column(name = "lucro")
+    private BigDecimal lucro;
     @Column(name = "preco_venda")
     private BigDecimal precoVenda;
     @Column(name = "preco_especial")
@@ -223,5 +235,31 @@ public class Produto implements Serializable {
     public String toString() {
         return "br.com.techsulsistemas.servico.produto.produto.Produto[ idProduto=" + idProduto + " ]";
     }
+
+    public String getEan() {
+        return ean;
+    }
+
+    public void setEan(String ean) {
+        this.ean = ean;
+    }
+
+    public String getEanTributario() {
+        return eanTributario;
+    }
+
+    public void setEanTributario(String eanTributario) {
+        this.eanTributario = eanTributario;
+    }
+
+    public BigDecimal getLucro() {
+        return lucro;
+    }
+
+    public void setLucro(BigDecimal lucro) {
+        this.lucro = lucro;
+    }
+    
+    
     
 }

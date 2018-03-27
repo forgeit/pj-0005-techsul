@@ -41,6 +41,17 @@ public class GenericDAO<T> {
         }
     }
     
+    public List<T> findAllOrderBy(String coluna) {
+        try {
+            String sql = "SELECT t FROM " + persistentClass.getSimpleName() + " t ORDER BY t." + coluna;
+            Query q = DAO.getEM().createQuery(sql);
+            return q.getResultList();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return Collections.EMPTY_LIST;
+        }
+    }
+    
     public List<T> buscarSemelhantes(String coluna, String valor) throws Exception {
         String sql = "SELECT t FROM " + persistentClass.getSimpleName() + " t WHERE t." + coluna + " LIKE :valor";
         System.out.println(sql);

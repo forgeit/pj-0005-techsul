@@ -24,7 +24,7 @@ public class ProdutoUnidadeServico {
     public List<ComboDto> combo() throws Exception {
         try {
             List<ComboDto> lista = new ArrayList<>();
-            List<ProdutoUnidade> dados = dao.findAll();
+            List<ProdutoUnidade> dados = dao.findAllOrderBy("unidade");
             
             for (ProdutoUnidade model : dados) {
                 lista.add(criarConversorComboDto(model));

@@ -39,7 +39,7 @@ public class ProdutoCsosnServico {
     private ComboDto criarConversorComboDto(ProdutoCsosn model) throws Exception {
         return ComboDto.builder()
                 .id(model.getIdProdutoCsosn())
-                .descricao(model.getDescricao())
+                .descricao(model.getCodigo() + " - " + model.getDescricao().substring(0, 30))
                 .build();
     }
 }

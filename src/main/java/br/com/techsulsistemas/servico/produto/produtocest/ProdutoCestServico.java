@@ -31,6 +31,7 @@ public class ProdutoCestServico {
             for (ProdutoCest model : dados) {
                 HashMap<String, Object> cest = new HashMap<>();
                 cest.put("cest", model.getCest());
+                cest.put("cestDescricao", model.getDescricao());
                 lista.add(criarConversorComboDto(model, cest));
             }
             
