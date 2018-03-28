@@ -6,7 +6,6 @@
 package br.com.techsulsistemas.servico.produto.produto;
 
 import br.com.techsulsistemas.servico.config.ForgeController;
-import br.com.techsulsistemas.servico.produto.produtogrupo.ProdutoGrupoDto;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -41,6 +40,19 @@ public class ProdutoController extends ForgeController {
         try {
             ProdutoDto dto = servico.carregar(codigo);
             addData(dto);
+        } catch (Exception ex) {
+            addError("Ocorreu um erro ao carregar o objeto");
+        }
+        
+        return build();
+    }
+    
+    @GET
+    @Path("ultimo-id")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response ultimoId() {
+        try {
+            addData(servico.ultimoId() + 1);
         } catch (Exception ex) {
             addError("Ocorreu um erro ao carregar o objeto");
         }

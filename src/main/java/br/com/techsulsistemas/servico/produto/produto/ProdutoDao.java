@@ -21,4 +21,9 @@ public class ProdutoDao extends GenericDAO<Produto> {
                 .getSingleResult();
     }
     
+    public Integer ultimoId() throws Exception{
+        return (Integer) DAO.getEM().createQuery("SELECT MAX(p.idProduto) FROM Produto p")
+                .getSingleResult();
+    }
+    
 }

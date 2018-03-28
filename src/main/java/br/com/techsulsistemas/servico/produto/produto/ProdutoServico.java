@@ -62,6 +62,10 @@ public class ProdutoServico {
         return criarConversorDto(dao.encontrarProdutoPorCodigo(codigo));
     }
     
+    public Integer ultimoId() throws Exception {
+        return dao.ultimoId();
+    }
+    
     public void atualizar(ProdutoDto dto) throws Exception {
         validarEntrada(dto);
         

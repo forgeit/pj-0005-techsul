@@ -10,12 +10,17 @@
 	function dataservice($http, $location, $q, $httpParamSerializer, RestUtils) {
 		var service = new RestUtils('basico/produto/produto');
 
-        service.buscar = buscar;
+        service.buscar         = buscar;
+        service.buscarUltimoId = buscarUltimoId;
         
         return service;
 
         function buscar(data) { 
             return $http.get(service.url + '/codigo/' + data);
+        }
+
+        function buscarUltimoId() { 
+            return $http.get(service.url + '/ultimo-id');
         }
 	}
 	

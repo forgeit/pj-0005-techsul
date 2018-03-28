@@ -13,7 +13,8 @@
 		'produtoUnidadeUtils',
 		'produtoCestUtils',
 		'produtoOrigemUtils',
-		'produtoCsosnUtils']
+		'produtoCsosnUtils',
+		'produtoUtils']
 
 	function CtrlForm(
 		dataservice, 
@@ -22,7 +23,8 @@
 		produtoUnidadeUtils,
 		produtoCestUtils,
 		produtoOrigemUtils,
-		produtoCsosnUtils) {
+		produtoCsosnUtils,
+		produtoUtils) {
 
 		/* jshint validthis: true */
 		var vm = this;
@@ -32,6 +34,7 @@
 		var PRODUTO_CEST    = 2;
 		var PRODUTO_ORIGEM  = 3;
 		var PRODUTO_CSOSN   = 4;
+		var PRODUTO         = 5;
 
 		var KEY_ENTER = 13;
 
@@ -135,6 +138,7 @@
 			promises.push(produtoCestUtils.carregarCombo());
 			promises.push(produtoOrigemUtils.carregarCombo());
 			promises.push(produtoCsosnUtils.carregarCombo());
+			promises.push(produtoUtils.carregarUltimoId());
 
 			multiPromise.ready(promises).then(function(values) {
 				if (values[PRODUTO_GRUPO].exec) {
@@ -166,13 +170,26 @@
 				} else {
 					toastr.error('Erro ao carregar a lista de CSOSN.');
 				}
+
+				if (values[PRODUTO].exec) {
+					vm.model.codigo = values[PRODUTO].objeto;
+				}
+
 			});
 		}
 
 		function novo(formulario) {
-			setarObjetoInicial();
-			vm.modoEdicao = false;
-			formulario.$setPristine();
+			var promises = [];
+
+			promises.push(produtoUtils.carregarUltimoId());
+
+			multiPromise.ready(promises).then(function(values) {
+
+				setarObjetoInicial(values[0].objeto);
+				vm.modoEdicao = false;
+				formulario.$setPristine();
+
+			});
 		}
 
 		function primeiro() {
@@ -282,7 +299,7 @@
 			}
 		}
 
-		function setarObjetoInicial() {
+		function setarObjetoInicial(codigo) {
 			vm.model = {};
 			vm.model.precoCusto         = 0;
 			vm.model.precoVenda         = 0;
@@ -290,6 +307,10 @@
 			vm.model.lucro              = 0;
 			vm.model.quantidadeEspecial = 0;
 			vm.model.situacao           = 'true';
+
+			if (codigo) {
+				vm.model.codigo = codigo;
+			}
 
 			delete vm.csosn;
 			delete vm.grupo;
