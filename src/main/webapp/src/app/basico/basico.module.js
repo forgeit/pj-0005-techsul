@@ -2,7 +2,8 @@
 
 	angular.module('app.basico', [
 		'basico.empresa',
-		'basico.endereco',
+        'basico.endereco',
+		'basico.estoque',
 		'basico.produto'
 		]);
 

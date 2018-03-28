@@ -6,6 +6,8 @@
 package br.com.techsulsistemas.servico.produto.produto;
 
 import br.com.techsulsistemas.servico.config.ForgeController;
+import br.com.techsulsistemas.servico.config.comum.AutoCompleteDto;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -192,6 +194,20 @@ public class ProdutoController extends ForgeController {
             addData(dto);
         } catch (Exception ex) {
             addError("Ocorreu um erro ao carregar o objeto");
+        }
+        
+        return build();
+    }
+    
+    @GET
+    @Path("autocomplete/{filtro}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response autocomplete(@PathParam("filtro") String filtro) {
+        try {
+            List<AutoCompleteDto> lista = servico.autocomplete(filtro);
+            addData(lista);
+        } catch (Exception ex) {
+            addError("Ocorreu um erro ao carregar a lista");
         }
         
         return build();

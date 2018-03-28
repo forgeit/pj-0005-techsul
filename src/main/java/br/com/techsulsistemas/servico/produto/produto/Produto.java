@@ -5,6 +5,8 @@
  */
 package br.com.techsulsistemas.servico.produto.produto;
 
+import br.com.techsulsistemas.servico.estoque.estoque.Estoque;
+import br.com.techsulsistemas.servico.estoque.estoquemovimentacao.EstoqueMovimentacao;
 import br.com.techsulsistemas.servico.produto.produtocest.ProdutoCest;
 import br.com.techsulsistemas.servico.produto.produtocsosn.ProdutoCsosn;
 import br.com.techsulsistemas.servico.produto.produtogrupo.ProdutoGrupo;
@@ -12,7 +14,9 @@ import br.com.techsulsistemas.servico.produto.produtoorigem.ProdutoOrigem;
 import br.com.techsulsistemas.servico.produto.produtounidade.ProdutoUnidade;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +26,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -35,6 +40,11 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Produto.findAll", query = "SELECT p FROM Produto p")})
 public class Produto implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produto")
+    private Collection<Estoque> estoqueCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produto")
+    private Collection<EstoqueMovimentacao> estoqueMovimentacaoCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -258,6 +268,22 @@ public class Produto implements Serializable {
 
     public void setLucro(BigDecimal lucro) {
         this.lucro = lucro;
+    }
+
+    public Collection<Estoque> getEstoqueCollection() {
+        return estoqueCollection;
+    }
+
+    public void setEstoqueCollection(Collection<Estoque> estoqueCollection) {
+        this.estoqueCollection = estoqueCollection;
+    }
+
+    public Collection<EstoqueMovimentacao> getEstoqueMovimentacaoCollection() {
+        return estoqueMovimentacaoCollection;
+    }
+
+    public void setEstoqueMovimentacaoCollection(Collection<EstoqueMovimentacao> estoqueMovimentacaoCollection) {
+        this.estoqueMovimentacaoCollection = estoqueMovimentacaoCollection;
     }
     
     

@@ -1,4 +1,4 @@
-<form novalidate name="formulario" autocomplete="off">
+<form novalidate name="formulario" autocomplete="off" >
 	<div class="panel panel-primary">
 		<div class="panel-heading">Cadastro de Produto</div>
 		<div class="panel-body" style="padding: 2px;">
@@ -8,7 +8,7 @@
 				</div>
 
 				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
-					<button type="submit" ng-disabled="formulario.$invalid" ng-click="vm.salvar(formulario)" style="width: 100%;" class="btn btn-primary"><i class="fa fa-save fa-2x"></i><br>Salvar</button>
+					<button type="button" ng-disabled="formulario.$invalid" ng-click="vm.salvar(formulario)" style="width: 100%;" class="btn btn-primary"><i class="fa fa-save fa-2x"></i><br>Salvar</button>
 				</div>
 
 				<div class="col-md-1" style="padding-left: 1px; padding-right: 1px;">
@@ -46,190 +46,188 @@
 
 			<div class="row" style="margin-top: 20px;">
 				<div class="col-md-12">
-					<form novalidate>
-						<div class="row">
-							<div class="col-md-offset-1 col-md-4">
-								<div class="form-group" ng-class="formulario.codigo.$dirty && formulario.codigo.$invalid ? 'has-error' : ''">
-									<label for="codigo">Código: *</label>
-									<input name="codigo" type="text" class="form-control input-sm" ng-model="vm.model.codigo" required ng-keyup="vm.buscarPorCodigo(vm.model.codigo, $event)">
-								  	<span class="help-block" ng-show="formulario.codigo.$dirty && formulario.codigo.$invalid && formulario.codigo.$error.required">Campo é obrigatório.</span>
-								</div>
-							</div>
-
-							<div class="col-md-3">
-								<div class="form-group" ng-class="formulario.ean.$dirty && formulario.ean.$invalid ? 'has-error' : ''">
-									<label for="ean">EAN:</label>
-									<input name="ean" type="text" class="form-control input-sm" ng-model="vm.model.ean" maxlength="13">
-									<span class="help-block" ng-show="formulario.ean.$dirty && formulario.ean.$invalid && formulario.ean.$error.number">Valor deve ser númerico.</span>
-								</div>
-							</div>
-
-							<div class="col-md-3">
-								<div class="form-group" ng-class="formulario.eanTributario.$dirty && formulario.eanTributario.$invalid ? 'has-error' : ''">
-									<label for="eanTributario">EAN Tributário:</label>
-									<input name="eanTributario" type="text" class="form-control input-sm" ng-model="vm.model.eanTributario" maxlength="13">
-									<span class="help-block" ng-show="formulario.eanTributario.$dirty && formulario.eanTributario.$invalid && formulario.eanTributario.$error.number">Valor deve ser númerico.</span>
-								</div>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-4">
+							<div class="form-group" ng-class="formulario.codigo.$dirty && formulario.codigo.$invalid ? 'has-error' : ''">
+								<label for="codigo">Código: *</label>
+								<input name="codigo" type="text" class="form-control input-sm" ng-model="vm.model.codigo" required ng-keyup="vm.buscarPorCodigo(vm.model.codigo, $event)">
+								<span class="help-block" ng-show="formulario.codigo.$dirty && formulario.codigo.$invalid && formulario.codigo.$error.required">Campo é obrigatório.</span>
 							</div>
 						</div>
 
-						<div class="row">
-							<div class="col-md-offset-1 col-md-8">
-								<div class="form-group" ng-class="formulario.descricao.$dirty && formulario.descricao.$invalid ? 'has-error' : ''">
-									<label for="descricao">Descrição: *</label>
-									<input name="descricao" type="text" class="form-control input-sm" ng-model="vm.model.descricao" required>
-									<span class="help-block" ng-show="formulario.descricao.$dirty && formulario.descricao.$invalid && formulario.descricao.$error.required">Campo é obrigatório.</span>
-								</div>
-							</div>
-
-							<div class="col-md-2">
-								<div class="form-group">
-									<label for="unidade">Situação:</label>
-									<select class="form-control" ng-model="vm.model.situacao">
-										<option value="true">Ativo</option>
-										<option value="false">Inativo</option>
-									</select>
-								</div>
+						<div class="col-md-3">
+							<div class="form-group" ng-class="formulario.ean.$dirty && formulario.ean.$invalid ? 'has-error' : ''">
+								<label for="ean">EAN:</label>
+								<input name="ean" type="text" class="form-control input-sm" ng-model="vm.model.ean" maxlength="13">
+								<span class="help-block" ng-show="formulario.ean.$dirty && formulario.ean.$invalid && formulario.ean.$error.number">Valor deve ser númerico.</span>
 							</div>
 						</div>
 
-						<div class="row">
-							<div class="col-md-offset-1 col-md-2">
-								<div class="form-group has-feedback" ng-class="formulario.unidade.$dirty && formulario.unidade.$invalid ? 'has-error' : ''">
-									<label for="unidade">Unidade: *</label>
-									<input 
-										type="text" ng-model="vm.unidade" 
-										uib-typeahead="objeto as objeto.descricao for objeto in vm.unidadeList | filter:{descricao:$viewValue}" 
-										class="form-control input-sm" typeahead-show-hint="true" 
-										typeahead-min-length="0" 
-										typeahead-on-select="vm.setUnidade($item, $model, $label, $event)"
-										ng-change="vm.setUnidade(null)"
-										required 
-										name="unidade" >
-									<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
-									<span class="help-block" ng-show="formulario.unidade.$dirty && formulario.unidade.$invalid && formulario.unidade.$error.required">Campo é obrigatório.</span>
-								</div>
+						<div class="col-md-3">
+							<div class="form-group" ng-class="formulario.eanTributario.$dirty && formulario.eanTributario.$invalid ? 'has-error' : ''">
+								<label for="eanTributario">EAN Tributário:</label>
+								<input name="eanTributario" type="text" class="form-control input-sm" ng-model="vm.model.eanTributario" maxlength="13">
+								<span class="help-block" ng-show="formulario.eanTributario.$dirty && formulario.eanTributario.$invalid && formulario.eanTributario.$error.number">Valor deve ser númerico.</span>
 							</div>
-								
-							<div class="col-md-2">
-								<div class="form-group has-feedback" ng-class="formulario.ncm.$dirty && formulario.ncm.$invalid ? 'has-error' : ''">
-									<label for="ncm">NCM: *</label>
-									<input 
-										type="text" ng-model="vm.ncm" 
-										uib-typeahead="objeto as objeto.descricao for objeto in vm.ncmList | filter:{descricao:$viewValue}" 
-										class="form-control input-sm" typeahead-show-hint="true" 
-										typeahead-min-length="3" 
-										typeahead-on-select="vm.setNCM($item, $model, $label, $event)"
-										ng-change="vm.setNCM(null)"
-										required 
-										name="ncm" >
-									<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
-									<span class="help-block" ng-show="formulario.ncm.$dirty && formulario.ncm.$invalid && formulario.ncm.$error.required">Campo é obrigatório.</span>
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="form-group" ng-class="formulario.cest.$dirty && formulario.cest.$invalid ? 'has-error' : ''">
-									<label for="cest">CEST: *</label>
-									<input name="cest" type="text" class="form-control input-sm" ng-model="vm.cest" ng-disabled="true">
-									<span class="help-block" ng-show="formulario.cest.$dirty && formulario.cest.$invalid && formulario.cest.$error.required">Campo é obrigatório.</span>
-								</div>
-							</div>
-
 						</div>
+					</div>
 
-						<div class="row">
-							<div class="col-md-offset-1 col-md-4">
-								<div class="form-group has-feedback" ng-class="formulario.grupo.$dirty && formulario.grupo.$invalid ? 'has-error' : ''">
-									<label for="grupo">Grupo: *</label>
-									<input 
-										type="text" ng-model="vm.grupo" 
-										uib-typeahead="objeto as objeto.descricao for objeto in vm.grupoList | filter:{descricao:$viewValue}" 
-										class="form-control input-sm" typeahead-show-hint="true" 
-										typeahead-min-length="0" 
-										typeahead-on-select="vm.setGrupo($item, $model, $label, $event)"
-										ng-change="vm.setGrupo(null)"
-										required 
-										name="grupo" >
-									<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
-									<span class="help-block" ng-show="formulario.grupo.$dirty && formulario.grupo.$invalid && formulario.grupo.$error.required">Campo é obrigatório.</span>
-								</div>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-8">
+							<div class="form-group" ng-class="formulario.descricao.$dirty && formulario.descricao.$invalid ? 'has-error' : ''">
+								<label for="descricao">Descrição: *</label>
+								<input name="descricao" type="text" class="form-control input-sm" ng-model="vm.model.descricao" required>
+								<span class="help-block" ng-show="formulario.descricao.$dirty && formulario.descricao.$invalid && formulario.descricao.$error.required">Campo é obrigatório.</span>
 							</div>
 						</div>
 
-						<div class="row">
-							<div class="col-md-offset-1 col-md-2">
-								<div class="form-group">
-									<label for="precoCusto">Preço de Custo:</label>
-									<input type="text" name="precoCusto" ng-model="vm.model.precoCusto" ui-money-mask="2" class="form-control input-sm" ng-change="vm.evtChangePrecoCusto()">
-								</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label for="unidade">Situação:</label>
+								<select class="form-control" ng-model="vm.model.situacao">
+									<option value="true">Ativo</option>
+									<option value="false">Inativo</option>
+								</select>
 							</div>
+						</div>
+					</div>
 
-							<div class="col-md-2">
-								<div class="form-group">
-									<label for="lucro">Lucro:</label>
-									<input class="form-control input-sm" type="text" name="lucro" ng-model="vm.model.lucro" ui-percentage-mask ng-change="vm.evtChangeLucro()">
-								</div>
-							</div>
-
-							<div class="col-md-2">
-								<div class="form-group">
-									<label for="precoVenda">Preço de Venda:</label>
-									<input type="text" name="precoVenda" ng-model="vm.model.precoVenda" ui-money-mask="2" class="form-control input-sm" ng-change="vm.evtChangePrecoVenda()">
-								</div>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-2">
+							<div class="form-group has-feedback" ng-class="formulario.unidade.$dirty && formulario.unidade.$invalid ? 'has-error' : ''">
+								<label for="unidade">Unidade: *</label>
+								<input 
+								type="text" ng-model="vm.unidade" 
+								uib-typeahead="objeto as objeto.descricao for objeto in vm.unidadeList | filter:{descricao:$viewValue}" 
+								class="form-control input-sm" typeahead-show-hint="true" 
+								typeahead-min-length="0" 
+								typeahead-on-select="vm.setUnidade($item, $model, $label, $event)"
+								ng-change="vm.setUnidade(null)"
+								required 
+								name="unidade" >
+								<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
+								<span class="help-block" ng-show="formulario.unidade.$dirty && formulario.unidade.$invalid && formulario.unidade.$error.required">Campo é obrigatório.</span>
 							</div>
 						</div>
 
-						<div class="row"> 							
-							<div class="col-md-offset-1 col-md-2">
-								<div class="form-group">
-									<label for="precoEspecial">Preço Especial:</label>
-									<input type="text" name="precoEspecial" ng-model="vm.model.precoEspecial" ui-money-mask="2" class="form-control input-sm">
-								</div>
+						<div class="col-md-2">
+							<div class="form-group has-feedback" ng-class="formulario.ncm.$dirty && formulario.ncm.$invalid ? 'has-error' : ''">
+								<label for="ncm">NCM: *</label>
+								<input 
+								type="text" ng-model="vm.ncm" 
+								uib-typeahead="objeto as objeto.descricao for objeto in vm.ncmList | filter:{descricao:$viewValue}" 
+								class="form-control input-sm" typeahead-show-hint="true" 
+								typeahead-min-length="3" 
+								typeahead-on-select="vm.setNCM($item, $model, $label, $event)"
+								ng-change="vm.setNCM(null)"
+								required 
+								name="ncm" >
+								<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
+								<span class="help-block" ng-show="formulario.ncm.$dirty && formulario.ncm.$invalid && formulario.ncm.$error.required">Campo é obrigatório.</span>
 							</div>
+						</div>
 
-							<div class="col-md-2">
-								<div class="form-group">
-									<label for="quantidadeEspecial">Quantidade Preço Especial:</label>
-									<input name="quantidadeEspecial" type="text" class="form-control input-sm" ng-model="vm.model.quantidadeEspecial" ui-number-mask="2">
-								</div>
+						<div class="col-md-6">
+							<div class="form-group" ng-class="formulario.cest.$dirty && formulario.cest.$invalid ? 'has-error' : ''">
+								<label for="cest">CEST: *</label>
+								<input name="cest" type="text" class="form-control input-sm" ng-model="vm.cest" ng-disabled="true">
+								<span class="help-block" ng-show="formulario.cest.$dirty && formulario.cest.$invalid && formulario.cest.$error.required">Campo é obrigatório.</span>
 							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-md-offset-1 col-md-4">
+							<div class="form-group has-feedback" ng-class="formulario.grupo.$dirty && formulario.grupo.$invalid ? 'has-error' : ''">
+								<label for="grupo">Grupo: *</label>
+								<input 
+								type="text" ng-model="vm.grupo" 
+								uib-typeahead="objeto as objeto.descricao for objeto in vm.grupoList | filter:{descricao:$viewValue}" 
+								class="form-control input-sm" typeahead-show-hint="true" 
+								typeahead-min-length="0" 
+								typeahead-on-select="vm.setGrupo($item, $model, $label, $event)"
+								ng-change="vm.setGrupo(null)"
+								required 
+								name="grupo" >
+								<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
+								<span class="help-block" ng-show="formulario.grupo.$dirty && formulario.grupo.$invalid && formulario.grupo.$error.required">Campo é obrigatório.</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-offset-1 col-md-2">
+							<div class="form-group">
+								<label for="precoCusto">Preço de Custo:</label>
+								<input type="text" name="precoCusto" ng-model="vm.model.precoCusto" ui-money-mask="2" class="form-control input-sm" ng-change="vm.evtChangePrecoCusto()">
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="form-group">
+								<label for="lucro">Lucro:</label>
+								<input class="form-control input-sm" type="text" name="lucro" ng-model="vm.model.lucro" ui-percentage-mask ng-change="vm.evtChangeLucro()">
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="form-group">
+								<label for="precoVenda">Preço de Venda:</label>
+								<input type="text" name="precoVenda" ng-model="vm.model.precoVenda" ui-money-mask="2" class="form-control input-sm" ng-change="vm.evtChangePrecoVenda()">
+							</div>
+						</div>
+					</div>
+
+					<div class="row"> 							
+						<div class="col-md-offset-1 col-md-2">
+							<div class="form-group">
+								<label for="precoEspecial">Preço Especial:</label>
+								<input type="text" name="precoEspecial" ng-model="vm.model.precoEspecial" ui-money-mask="2" class="form-control input-sm">
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="form-group">
+								<label for="quantidadeEspecial">Quantidade Preço Especial:</label>
+								<input name="quantidadeEspecial" type="text" class="form-control input-sm" ng-model="vm.model.quantidadeEspecial" ui-number-mask="2">
+							</div>
+						</div>
 						
-							<div class="col-md-offset-2 col-md-2">
-								<div class="form-group has-feedback" ng-class="formulario.origemMercadoria.$dirty && formulario.origemMercadoria.$invalid ? 'has-error' : ''">
-									<label for="origemMercadoria">Origem da Mercadoria: *</label>
-									<input 
-										type="text" ng-model="vm.origemMercadoria" 
-										uib-typeahead="objeto as objeto.descricao for objeto in vm.origemMercadoriaList | filter:{descricao:$viewValue}" 
-										class="form-control input-sm" typeahead-show-hint="true" 
-										typeahead-min-length="0" 
-										typeahead-on-select="vm.setOrigem($item, $model, $label, $event)"
-										ng-change="vm.setOrigem(null)"
-										required 
-										name="origemMercadoria" >
-									<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
-									<span class="help-block" ng-show="formulario.origemMercadoria.$dirty && formulario.origemMercadoria.$invalid && formulario.origemMercadoria.$error.required">Campo é obrigatório.</span>
-								</div>
-							</div>
-
-							<div class="col-md-2">
-								<div class="form-group has-feedback" ng-class="formulario.csosn.$dirty && formulario.csosn.$invalid ? 'has-error' : ''">
-									<label for="csosn">CSOSN: *</label>
-									<input 
-										type="text" ng-model="vm.csosn" 
-										uib-typeahead="objeto as objeto.descricao for objeto in vm.csosnList | filter:{descricao:$viewValue}" 
-										class="form-control input-sm" typeahead-show-hint="true" 
-										typeahead-min-length="0" 
-										typeahead-on-select="vm.setCsosn($item, $model, $label, $event)"
-										ng-change="vm.setCsosn(null)"
-										required 
-										name="csosn" >
-									<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
-									<span class="help-block" ng-show="formulario.csosn.$dirty && formulario.csosn.$invalid && formulario.csosn.$error.required">Campo é obrigatório.</span>
-								</div>
+						<div class="col-md-offset-2 col-md-2">
+							<div class="form-group has-feedback" ng-class="formulario.origemMercadoria.$dirty && formulario.origemMercadoria.$invalid ? 'has-error' : ''">
+								<label for="origemMercadoria">Origem da Mercadoria: *</label>
+								<input 
+								type="text" ng-model="vm.origemMercadoria" 
+								uib-typeahead="objeto as objeto.descricao for objeto in vm.origemMercadoriaList | filter:{descricao:$viewValue}" 
+								class="form-control input-sm" typeahead-show-hint="true" 
+								typeahead-min-length="0" 
+								typeahead-on-select="vm.setOrigem($item, $model, $label, $event)"
+								ng-change="vm.setOrigem(null)"
+								required 
+								name="origemMercadoria" >
+								<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
+								<span class="help-block" ng-show="formulario.origemMercadoria.$dirty && formulario.origemMercadoria.$invalid && formulario.origemMercadoria.$error.required">Campo é obrigatório.</span>
 							</div>
 						</div>
-					</form>
+
+						<div class="col-md-2">
+							<div class="form-group has-feedback" ng-class="formulario.csosn.$dirty && formulario.csosn.$invalid ? 'has-error' : ''">
+								<label for="csosn">CSOSN: *</label>
+								<input 
+								type="text" ng-model="vm.csosn" 
+								uib-typeahead="objeto as objeto.descricao for objeto in vm.csosnList | filter:{descricao:$viewValue}" 
+								class="form-control input-sm" typeahead-show-hint="true" 
+								typeahead-min-length="0" 
+								typeahead-on-select="vm.setCsosn($item, $model, $label, $event)"
+								ng-change="vm.setCsosn(null)"
+								required 
+								name="csosn" >
+								<span style="top: 20px;" class="glyphicon glyphicon-chevron-down form-control-feedback" aria-hidden="true"></span>
+								<span class="help-block" ng-show="formulario.csosn.$dirty && formulario.csosn.$invalid && formulario.csosn.$error.required">Campo é obrigatório.</span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

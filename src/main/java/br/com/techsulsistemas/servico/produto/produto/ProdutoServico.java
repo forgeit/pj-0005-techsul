@@ -6,12 +6,18 @@
 package br.com.techsulsistemas.servico.produto.produto;
 
 import br.com.techsulsistemas.servico.config.banco.DAO;
+import br.com.techsulsistemas.servico.config.comum.AutoCompleteDto;
+import br.com.techsulsistemas.servico.estoque.estoque.EstoqueDto;
+import br.com.techsulsistemas.servico.estoque.estoque.EstoqueServico;
 import br.com.techsulsistemas.servico.produto.produtocest.ProdutoCest;
 import br.com.techsulsistemas.servico.produto.produtocsosn.ProdutoCsosn;
 import br.com.techsulsistemas.servico.produto.produtogrupo.ProdutoGrupo;
 import br.com.techsulsistemas.servico.produto.produtoorigem.ProdutoOrigem;
 import br.com.techsulsistemas.servico.produto.produtounidade.ProdutoUnidade;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -21,9 +27,11 @@ import org.apache.commons.lang3.StringUtils;
 public class ProdutoServico {
     
     private final ProdutoDao dao;
+    private final EstoqueServico estoqueServico;
     
     public ProdutoServico() {
         dao = new ProdutoDao();
+        estoqueServico = new EstoqueServico();
     }
     
     public void criar(ProdutoDto dto) throws Exception {
@@ -50,6 +58,15 @@ public class ProdutoServico {
             
             DAO.begin();
             DAO.getEM().persist(produto);
+            DAO.getEM().flush();
+            
+            EstoqueDto estoqueDto = EstoqueDto.builder()
+                    .produto(produto.getIdProduto())
+                    .quantidade(new Double(0))
+                    .build();
+            
+            estoqueServico.criar(estoqueDto);
+            
             DAO.commit();
         } catch (Exception ex) {
             DAO.rollback();
@@ -137,6 +154,28 @@ public class ProdutoServico {
     
     public void remover(Integer id) throws Exception {
         dao.remover(id);
+    }
+    
+    public List<AutoCompleteDto> autocomplete(String valor) throws Exception {
+        try {
+            List<AutoCompleteDto> lista = new ArrayList<>();
+            List<Produto> dados = dao.buscarSemelhantes("codigo", valor);
+            
+            for (Produto model : dados) {
+                lista.add(criarConversorAutoCompleteDto(model));
+            }
+            
+            return lista;
+        } catch (Exception ex) {
+            return Collections.EMPTY_LIST;
+        }
+    }
+    
+    private AutoCompleteDto criarConversorAutoCompleteDto(Produto model) throws Exception {
+        return AutoCompleteDto.builder()
+                .id(model.getIdProduto())
+                .descricao(model.getCodigo())
+                .build();
     }
     
     private void validarEntrada(ProdutoDto dto) throws Exception {

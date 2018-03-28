@@ -14,7 +14,8 @@
 		'produtoCestUtils',
 		'produtoOrigemUtils',
 		'produtoCsosnUtils',
-		'produtoUtils']
+		'produtoUtils',
+		'$location']
 
 	function CtrlForm(
 		dataservice, 
@@ -24,7 +25,8 @@
 		produtoCestUtils,
 		produtoOrigemUtils,
 		produtoCsosnUtils,
-		produtoUtils) {
+		produtoUtils,
+		$location) {
 
 		/* jshint validthis: true */
 		var vm = this;
@@ -55,6 +57,7 @@
 		vm.setOrigem           = setOrigem;
 		vm.setUnidade          = setUnidade;
 		vm.ultimo              = ultimo;
+		vm.voltar 			   = voltar;
 
 		init();
 
@@ -196,6 +199,7 @@
 			dataservice.primeiro().then(success).catch(error);
 
 			function error(response) {
+				novo();
 				toastr.error('Ocorreu um erro ao carregar os dados.');
 			}
 
@@ -376,6 +380,7 @@
 			dataservice.ultimo().then(success).catch(error);
 
 			function error(response) {
+				novo();
 				toastr.error('Ocorreu um erro ao carregar os dados.');
 			}
 
@@ -383,6 +388,10 @@
 				vm.model = response.data.data.ProdutoDto;
 				carregarObjetosAuxiliares(vm.model);
 			}
+		}
+
+		function voltar() {
+			$location.path('/');
 		}
 	}
 

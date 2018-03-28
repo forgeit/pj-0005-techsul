@@ -14,6 +14,11 @@
     <class>br.com.techsulsistemas.servico.produto.produtoorigem.ProdutoOrigem</class>
     <class>br.com.techsulsistemas.servico.produto.produtounidade.ProdutoUnidade</class>
     <class>br.com.techsulsistemas.servico.produto.produto.Produto</class>
+    <class>br.com.techsulsistemas.servico.usuario.usuario.Usuario</class>
+    <class>br.com.techsulsistemas.servico.usuario.usuariotipo.UsuarioTipo</class>
+    <class>br.com.techsulsistemas.servico.estoque.estoque.Estoque</class>
+    <class>br.com.techsulsistemas.servico.estoque.estoquemovimentacaotipo.EstoqueMovimentacaoTipo</class>
+    <class>br.com.techsulsistemas.servico.estoque.estoquemovimentacao.EstoqueMovimentacao</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
