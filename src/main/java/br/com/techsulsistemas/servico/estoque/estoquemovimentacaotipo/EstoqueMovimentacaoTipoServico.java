@@ -8,6 +8,7 @@ package br.com.techsulsistemas.servico.estoque.estoquemovimentacaotipo;
 import br.com.techsulsistemas.servico.config.comum.ComboDto;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -28,7 +29,12 @@ public class EstoqueMovimentacaoTipoServico {
             List<EstoqueMovimentacaoTipo> dados = dao.findAllOrderBy("descricao");
             
             for (EstoqueMovimentacaoTipo model : dados) {
-                lista.add(criarConversorComboDto(model));
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("custo", model.getFgAlterarPrecoCusto());
+                map.put("venda", model.getFgAlterarPrecoVenda());
+                map.put("soma", model.getFgSoma());
+                
+                lista.add(criarConversorComboDto(model, map));
             }
             
             return lista;
@@ -37,10 +43,11 @@ public class EstoqueMovimentacaoTipoServico {
         }
     }
     
-    private ComboDto criarConversorComboDto(EstoqueMovimentacaoTipo model) throws Exception {
+    private ComboDto criarConversorComboDto(EstoqueMovimentacaoTipo model, HashMap<String, Object> map) throws Exception {
         return ComboDto.builder()
                 .id(model.getIdEstoqueMovimentacaoTipo())
                 .descricao(model.getDescricao())
+                .dados(map)
                 .build();
     }
 }

@@ -10,7 +10,13 @@
     function dataservice($http, $location, $q, $httpParamSerializer, RestUtils) {
         var service = new RestUtils('basico/estoque/estoque-movimentacao');        
 
+        service.buscarUltimasMovimentacoesPorProduto = buscarUltimasMovimentacoesPorProduto;
+        
         return service;
+
+        function buscarUltimasMovimentacoesPorProduto(produto) {
+            return $http.get(service.url + '/ultimos/produto/' + produto);
+        }
     }
     
 })();

@@ -5,8 +5,11 @@
 		'ui.bootstrap',
 		'ui.select',
 		'ngSanitize',
+        'ngStorage',
 		'ui.utils.masks',
-		'core.utils'
+		'angular-jwt',
+        'core.utils',
+		'core.auth'
 	]);
 
 })();

@@ -4,14 +4,27 @@
 		.module('core.utils')
 		.factory('controller', controller);
 
-	function controller() {
+	controller.$inject = ['AuthToken', 'jwtHelper'];
+
+	function controller(AuthToken, jwtHelper) {
 
 		var service = {
+			buscarDadosUsuario: buscarDadosUsuario,
 			criarRetornoPromise: criarRetornoPromise,
 			ler: ler
 		};
 
 		return service;
+
+		function buscarDadosUsuario() {
+            var usuario = {};
+
+            if (AuthToken.getToken('accessToken')) {
+                usuario = jwtHelper.decodeToken(AuthToken.getToken('accessToken'));
+            }
+
+            return usuario;
+        }
 
 		function criarRetornoPromise(exec, objeto) {
 			var retorno = {};

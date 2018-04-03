@@ -125,7 +125,7 @@
 
 		function evtChangePrecoVenda() {
 			if (vm.model.precoVenda > vm.model.precoCusto) {
-				vm.model.lucro = (((vm.model.precoVenda - vm.model.precoCusto)) * 100 / vm.model.precoCusto) / 100;
+				vm.model.lucro = (vm.model.precoVenda - vm.model.precoCusto) / vm.model.precoCusto;
 			} else {
 				vm.model.lucro = 0;
 			}

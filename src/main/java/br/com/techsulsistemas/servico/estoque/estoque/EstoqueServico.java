@@ -37,6 +37,22 @@ public class EstoqueServico {
         }
     }
     
+    public EstoqueDtoMovimentacao carregarEstoquePorProduto(Integer produto) throws Exception {
+        try {
+            Estoque estoque = dao.carregarEstoquePorProduto(produto);
+            
+            EstoqueDtoMovimentacao dto = EstoqueDtoMovimentacao.builder()
+                    .produto(estoque.getProduto().getDescricao())
+                    .quantidade(estoque.getQuantidade().doubleValue())
+                    .build();
+            
+            return dto;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
+    }
+    
     public void validarEntrada(EstoqueDto dto) throws Exception {
         if (dto.getProduto() == null) {
             throw new Exception("Para registrar um item no estoque é necessário saber o seu código.");
